@@ -82,7 +82,7 @@ public class SiclopSupervisorTest {
 
 
          //retrieve the former project object, if it exists
-        Project project = ProjectSerializer.loadProject("web/src/main/webapp/data/data.json.js");
+        Project project = ProjectSerializer.loadProject("../web/src/main/webapp/data/data.json.js");
         //no project found
         if(project == null){
             project = new Project("Siclop",projectConf);
@@ -99,6 +99,6 @@ public class SiclopSupervisorTest {
         System.out.println(project.toString());
 
         //Save the project as a json file
-        ProjectSerializer.saveProject("web/src/main/webapp/data/data.json.js", project);
+        ProjectSerializer.saveProject("../web/src/main/webapp/data/data.json.js", project);
     }
 }

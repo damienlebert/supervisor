@@ -11,6 +11,7 @@ import fr.supervisor.model.configuration.ArtifactConfSVN;
 import fr.supervisor.model.configuration.PhaseConf;
 import fr.supervisor.tool.extractor.SVNExtractor;
 import fr.supervisor.tool.extractor.WordExtractor;
+import fr.supervisor.tool.extractor.WriterExtractor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -160,11 +161,20 @@ public class Supervisor {
                         phase.addArtifact(newArtifact);
                         //extract the requirements from this artifact if the pattern is set
                         if (currentConf.getRequirementPattern() != null){
-                            if (! artifactPath.toFile().getName().endsWith("docx")){
-                                logger.warn("Un pattern est défini pour trouver des Requirements dans l'artifact {} mais celui-ci n'est pas au format docx", artifactPath);
+                            List<Requirement> requirements;
+                            if ( artifactPath.toFile().getName().endsWith("docx")){
+                                
+                                requirements = WordExtractor.extractRequirements(currentConf.getRequirementPattern(),currentConf.getStylePattern(), artifactPath.toFile(),version.getRootRequirement());
+                            }
+                            else if (artifactPath.toFile().getName().endsWith("odt")){
+                                
+                                requirements = WriterExtractor.extractRequirements(currentConf.getRequirementPattern(),currentConf.getStylePattern(), artifactPath.toFile(),version.getRootRequirement());
+                            }
+                            else{
+                                logger.warn("Un pattern est défini pour trouver des Requirements dans l'artifact {} mais celui-ci n'est pas d'un format reconnu", artifactPath);
                                 continue;
                             }
-                            List<Requirement> requirements = WordExtractor.extractRequirements(currentConf.getRequirementPattern(),currentConf.getStylePattern(), artifactPath.toFile(),version.getRootRequirement());
+                             
                              //requirements get the same tag list as their phase
                             for(Requirement requirement : requirements){
                                requirement.addAllTag(phase.getConf().getTags());

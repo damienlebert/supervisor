@@ -101,7 +101,7 @@ public class WordExtractor{
                 for (XWPFRun run : listRuns) {
                     fullParentParagraph += run.getText(0);
                 }
-
+                   
                 //Check if a requirement id is in this paragraph by searching for every requiremnt already found
                 boolean hasParent = false;
                 for (Requirement requirement : rootRequirement.getAllChildren()) {
