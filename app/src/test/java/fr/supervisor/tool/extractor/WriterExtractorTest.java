@@ -25,8 +25,8 @@ public class WriterExtractorTest {
                 //ES Pattern
                 //Pattern.compile("ES-CLIENT-PROJET-V\\d+-\\d+"), 
                 Pattern.compile("E[SC]-FT-SICLOP-G4R9C2-0[\\d]+"),
-                //OpenOffice style pattern
-                Pattern.compile("P[\\d][\\d][\\d]*"),
+                //OpenOffice style pattern .Something like Heading_20_2 (spaces are replaced by _20_) 
+                Pattern.compile("Head"),
                 //Odt file to extract requirement from
                 new File(testFile),
                 //root element for the requirements tree
