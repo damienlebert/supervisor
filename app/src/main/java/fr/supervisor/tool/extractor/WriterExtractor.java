@@ -21,7 +21,7 @@ import org.odftoolkit.odfdom.incubator.doc.text.OdfTextParagraph;
 import org.w3c.dom.Node;
 
 /**
- * User: sdaclin Date: 20/07/13 Time: 14:58
+ * User: dlebert Date: 18/10/13 Time: 14:58
  */
 public class WriterExtractor {
 
@@ -31,7 +31,7 @@ public class WriterExtractor {
      * parent requirement as well
      *
      * @param requirementPattern requirement pattern
-     * @param writerStylePattern MS Word style pattern, requirements will only
+     * @param writerStylePattern Writer style pattern, requirements will only
      * be searched in paragraphs using those styles
      * @param file File in which requirements will be searched
      * @param rootRequirement parent Requirement : it's the root of the
