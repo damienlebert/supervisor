@@ -32,7 +32,7 @@ public class WriterExtractorTest {
                 //root element for the requirements tree
                 rootRequirement);
 
-        assertNotNull("Impossible de trouver l'exigence ES-CLIENT-PROJET-V1-1 dans le document " + testFile, rootRequirement.findById("ES-FT-SICLOP-G4R9C2-003"));
+        assertNotNull("Impossible de trouver l'exigence ES-FT-SICLOP-G4R9C2-003 dans le document " + testFile, rootRequirement.findById("ES-FT-SICLOP-G4R9C2-003"));
         System.out.println("REQUIREMENTS TREE : \n"+rootRequirement);
     }
 }
