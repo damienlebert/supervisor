@@ -24,15 +24,20 @@ public class WriterExtractorTest {
         WriterExtractor.extractRequirements(
                 //ES Pattern
                 //Pattern.compile("ES-CLIENT-PROJET-V\\d+-\\d+"), 
-                Pattern.compile("E[SC]-FT-SICLOP-G4R9C2-0[\\d]+"),
-                //OpenOffice style pattern .Something like Heading_20_2 (spaces are replaced by _20_) 
+                Pattern.compile("ES-CLIENT-PROJET-V\\d+-\\d+"),
+                //OpenOffice style pattern .
+                //Fichier Word sauvegarder en .odt avec Word : Conserve le nom de style word "Titre 2"
+                //Fichier word ouvert avec OpenOffice et sauvegardé en .odt : 
+                //            Remplacement des styles titres par Heading "Heading 2"
+                //            Pour un style perso  "ASTEK - Titre 2"
+                //Fichier odt creés dans OpenOffice : remplacement des styles titres par Heading "Heading 2"
                 Pattern.compile("Head"),
                 //Odt file to extract requirement from
                 new File(testFile),
                 //root element for the requirements tree
                 rootRequirement);
 
-        assertNotNull("Impossible de trouver l'exigence ES-FT-SICLOP-G4R9C2-003 dans le document " + testFile, rootRequirement.findById("ES-FT-SICLOP-G4R9C2-003"));
+        assertNotNull("Impossible de trouver l'exigence ES-CLIENT-PROJET-V1-2 dans le document " + testFile, rootRequirement.findById("ES-CLIENT-PROJET-V1-2"));
         System.out.println("REQUIREMENTS TREE : \n"+rootRequirement);
     }
 }
